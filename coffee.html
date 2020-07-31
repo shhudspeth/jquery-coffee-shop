@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hackbright Coffee Shop</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link href="static/coffee.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="starter-template">
+        <h1>Coffee Shop</h1>
+        <br>
+
+        <img id="coffee_image" src="LOLWUT" alt="make this image work" height="300" width="200">
+
+
+        <table class="table">
+            <tr>
+                <td class="col-md-2">
+                    <button class="btn btn-default" id="espresso" price=3.25>Espresso</button>
+                </td>
+                <td class="col-md-2">
+                    <button class="btn btn-default" id="latte" price=4.15>Latte</button>
+                </td>
+                <td class="col-md-2">
+                    <button class="btn btn-default" id="hot-chocolate" price=2.50>Hot Chocolate</button>
+                </td>
+            </tr>
+            <tr>
+                <td>$3.25</td>
+                <td>$4.15</td>
+                <td>$2.50</td>
+            </tr>
+        </table>
+        <section id="your-cart">
+            <h1>Your Cart</h1>
+    
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                </tr>
+              </thead>
+    
+              <tbody id="cart-items"></tbody>
+            </table>
+        </section>
+        <h4>Total: $<span id="revenue">0.00</span></h4>
+        <button class="purchase-coffee-btn" type="submit" id="purchase-coffee"> Submit Your Order!</button>
+    </div>
+</div>
+
+<script>
+    "use strict";
+
+    $("#coffee_image").attr("src", "static/coffee_beans.jpg");
+
+
+    $("#purchase-coffee").on("click", ()=> {
+
+        makeCoffee();
+        setTimeout(function() {
+           resetCart();
+        }
+           , 10000);
+    });
+    
+    
+    
+    $("button.btn-default").on("click", ()=> {
+        
+    updateTotal($("button.btn-default").price); 
+    $("button.btn-default").addItemToCart($("button.btn-default").id);
+    });
+
+    // }
+
+    // $("#espresso").on("click", ()=> {
+    //     updateTotal($("#espresso").attr("price")); 
+    //     addItemToCart($("#espresso").attr("id"));
+    // })
+
+    // $("#latte").on("click", ()=> {
+    //     updateTotal($("#latte").attr("price"));
+    //     addItemToCart($("#latte").attr("id"));
+    // })
+
+    // $("#hot-chocolate").on("click", ()=> {
+    //     updateTotal($("#hot-chocolate").attr("price"));
+    //     addItemToCart($("#hot-chocolate").attr("id"))
+    // })
+    
+    // Add item to cart
+    const addItemToCart = (itemName) => {
+    $('#cart-items').append(`
+        <tr>
+        <td>${itemName}</td>
+        </tr>
+    `);
+    };
+
+    // resets cart total to zero and deletes all cart items
+    const resetCart = () => {
+    $('#revenue').html('0.00');
+    $('#cart-items').empty();
+
+    };
+    
+    function updateTotal(price) {
+      const cartTotal = $('#revenue');
+
+      let total = Number(cartTotal.html());
+      total += Number(price);
+
+      cartTotal.html(total.toFixed(2));
+    };
+        
+
+    function makeCoffee() {
+        $("#coffee_image").attr("src", "static/coffee_machine.jpg");
+        alert("Your coffee is brewing");
+
+         setTimeout(function() {
+            alert("Your coffee is ready!");
+            $("#coffee_image").fadeOut(100);
+            $("#coffee_image").attr("src", "static/coffee_mug.jpg");
+         }, 1500);
+
+         setTimeout(function() {
+           $("#coffee_image").attr("src", "static/coffee_beans.jpg").fadeIn();
+           alert("Need another cup?")
+         }, 6000);
+         
+    }
+
+</script>
+
+</body>
+</html>
