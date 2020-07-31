@@ -74,30 +74,30 @@
            , 10000);
     });
     
+
     
-    
-    $("button.btn-default").on("click", ()=> {
+    // $("button.btn-default").on("click", ()=> {
         
-    updateTotal($("button.btn-default").price); 
-    $("button.btn-default").addItemToCart($("button.btn-default").id);
-    });
+    // updateTotal($("button.btn-default").price); 
+    // $("button.btn-default").addItemToCart($("button.btn-default").id);
+    // });
 
     // }
 
-    // $("#espresso").on("click", ()=> {
-    //     updateTotal($("#espresso").attr("price")); 
-    //     addItemToCart($("#espresso").attr("id"));
-    // })
+    $("#espresso").on("click", ()=> {
+        updateTotal($("#espresso").attr("price")); 
+        addItemToCart($("#espresso").attr("id"));
+    })
 
-    // $("#latte").on("click", ()=> {
-    //     updateTotal($("#latte").attr("price"));
-    //     addItemToCart($("#latte").attr("id"));
-    // })
+    $("#latte").on("click", ()=> {
+        updateTotal($("#latte").attr("price"));
+        addItemToCart($("#latte").attr("id"));
+    })
 
-    // $("#hot-chocolate").on("click", ()=> {
-    //     updateTotal($("#hot-chocolate").attr("price"));
-    //     addItemToCart($("#hot-chocolate").attr("id"))
-    // })
+    $("#hot-chocolate").on("click", ()=> {
+        updateTotal($("#hot-chocolate").attr("price"));
+        addItemToCart($("#hot-chocolate").attr("id"))
+    })
     
     // Add item to cart
     const addItemToCart = (itemName) => {
